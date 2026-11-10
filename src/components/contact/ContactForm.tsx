@@ -10,6 +10,7 @@ import { ArrowUpRight, Check, Star } from "@/components/ui/icons";
 import { services } from "@/data/services";
 import { budgets } from "@/data/contact";
 import { features, site } from "@/data/site";
+import { track } from "@/lib/analytics";
 
 
 type Values = {
@@ -255,6 +256,7 @@ export default function ContactForm() {
       if (res.ok) {
         setSentName(values.name.trim());
         setStatus("success");
+        track("generate_lead", { form: "contact" });
         return;
       }
 

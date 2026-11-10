@@ -5,6 +5,7 @@ import BackToTop from "@/components/layout/BackToTop";
 import { ArrowUpRight, Chat, Mail, Phone } from "@/components/ui/icons";
 import { site } from "@/data/site";
 import CurrentYear from "@/components/layout/CurrentYear";
+import CookieSettings from "@/components/analytics/CookieSettings";
 
 const stripe = ["bg-vedorange", "bg-vedmagenta", "bg-vedpink", "bg-vedcoral"];
 const dots = ["bg-vedorange", "bg-vedmagenta", "bg-vedpink", "bg-vedcoral"];
@@ -163,6 +164,7 @@ export default function Footer() {
             <Link href="/terms" className="transition-colors hover:text-vedmagenta">
               Terms
             </Link>
+            {process.env.NEXT_PUBLIC_GA_ID && <CookieSettings />}
             <BackToTop />
           </div>
         </Container>

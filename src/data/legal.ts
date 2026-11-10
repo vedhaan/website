@@ -1,7 +1,7 @@
 import { site } from "@/data/site";
 import type { LegalSection } from "@/components/legal/LegalPage";
 
-export const legalUpdated = "24 October 2026";
+export const legalUpdated = "10 November 2026";
 
 export const privacySections: LegalSection[] = [
   {
@@ -48,6 +48,7 @@ export const privacySections: LegalSection[] = [
         "Google, through our email inbox and the embedded Google Map on the Contact page.",
         "Our website hosting provider.",
         "WhatsApp, only if you choose to message us there.",
+        "Google Analytics, only if you accept analytics cookies.",
       ],
       "We may also disclose information when the law requires it.",
     ],
@@ -56,7 +57,9 @@ export const privacySections: LegalSection[] = [
     id: "cookies",
     title: "Cookies and analytics",
     body: [
-      "This website does not currently use advertising or analytics cookies.",
+      "We use Google Analytics to understand how visitors use this website, such as which pages are viewed and how people find us. It sets cookies and collects information like your approximate location, device, browser and the pages you visit.",
+      "Analytics only runs if you click Accept on the cookie notice. You can change your choice at any time using Cookie settings in the footer.",
+      "We do not use advertising cookies.",
       "Third-party content, such as the embedded Google Map, may set its own cookies when you view it. Their handling is governed by their own policies.",
     ],
   },

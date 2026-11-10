@@ -7,6 +7,8 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { site } from "@/data/site";
 import ScrollReset from "@/components/ScrollReset";
+import AnalyticsConsent from "@/components/analytics/AnalyticsConsent";
+
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -45,6 +47,8 @@ export const viewport: Viewport = {
   themeColor: "#fff6ee",
 };
 
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 export default function RootLayout({
   children,
 }: {
@@ -64,6 +68,7 @@ export default function RootLayout({
           <Footer />
         </Providers>
         <JsonLd />
+        {gaId && <AnalyticsConsent gaId={gaId} />}
       </body>
     </html>
   );
