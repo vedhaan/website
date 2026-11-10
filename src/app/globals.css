@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-vedblack: #000000;
+  --color-vedpink: #b14b90;
+  --color-vedcoral: #d45b64;
+  --color-vedmagenta: #ea5580;
+  --color-vedorange: #f77b24;
+  --color-vedred: #bf2a15;
+  --color-veddarkred: #61040d;
+  --color-vedbrown: #87231c;
+  --color-vednavy: #0f0f1a;
+  --color-veddarkblue: #1a1a2a;
+  --color-vedcream: #fff6ee;
+  --color-vedcreamdeep: #fbe5d2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    font-size: clamp(16px, calc(16px + (100vw - 1440px) * 0.012), 26px);
+  }
+
+  body {
+    background: #fff6ee;
+    color: #0f0f1a;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: #f77b24;
+    color: #0f0f1a;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :where(.grid)>* {
+    min-width: 0;
+  }
+}
+
+@utility shadow-hard {
+  box-shadow: 5px 5px 0 #0f0f1a;
+}
+
+@utility shadow-hard-lg {
+  box-shadow: 8px 8px 0 #0f0f1a;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tile-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@utility animate-tile-bob {
+  animation: tile-bob 4.5s ease-in-out infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@utility animate-marquee-reverse {
+  animation: marquee-reverse 38s linear infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(rgba(15, 15, 26, 0.14) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-spin-slow,
+  .animate-blink,
+  .animate-dots,
+  .animate-tile-bob {
+    animation: none;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@utility animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes dots-drift {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(24px, 24px);
+  }
+}
+
+@utility animate-dots {
+  animation: dots-drift 3.5s linear infinite;
 }
